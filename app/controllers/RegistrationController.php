@@ -15,7 +15,7 @@ class RegistrationController extends BaseController {
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly user resource in storage.
      *
      * @return Response
      */
