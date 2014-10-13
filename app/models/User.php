@@ -8,7 +8,7 @@ use Illuminate\Auth\UserInterface;
 class User extends Eloquent implements UserInterface//,RemindableInterface
 {
     // use UserTrait;
-   // protected $fillable = array();
+    // protected $fillable = array();
     //protected $softDelete = true;
 
     /**
@@ -74,5 +74,14 @@ class User extends Eloquent implements UserInterface//,RemindableInterface
     {
         return 'remember_token';
     }
+
+    /**
+     *
+     */
+    public function isValidUser()
+    {
+
+    }
+
 
 }

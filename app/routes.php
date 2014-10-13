@@ -11,38 +11,30 @@
 |
 */
 
-Route::get
-('/','HomeController@showWelcome');
-//Route::controller('/', 'HomeController');
+// show the hello page
+Route::get('/','HomeController@showWelcome');
+// for login page
 Route::get('login','SessionsController@create');
+// for logout
 Route::get('logout', 'SessionsController@destroy');
-Route::resource('sessions','SessionsController');//,array('only'=>array('index','create','destroy')));
-
-Route::get('profile', function()
+//sessions resource (update, edit..)
+Route::resource('sessions','SessionsController');
+// return the user profile
+Route::get('profile', 'SessionsController@profile');
+Route::get('user/{id}', 'SessionsController@update');
+Route::post('user/{id}', 'SessionsController@update');
+Route::get('edit', 'SessionsController@edit');
+Route::post('edit', 'SessionsController@edit');
+Route::get('add_article', function()
 {
-    return "your emails is : " . Auth::user()->email;
-})->before('auth');
-
-
-//Route::post('login', 'LoginAuthController@postLogin');
-
-Route::get('/', array('as' => 'home',function()
-    {
-        return 'Home page';
-    }
-));
-
-Route::get('users', function()
-{
-    $users = User::all();
-
-    return View::make('users')->with('users', $users);
+    return 'soon';
 });
 
-Route::get('profile/prof', function()
+Route::get('test', function()
 {
-    return "your emails is : " . Auth::user()->email;
+    return View::make('test');
 });
+
 
 Route::resource('registration','RegistrationController');//,array('only'=>array('index','create','destroy')));
 
